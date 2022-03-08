@@ -9,3 +9,10 @@
   <Viewport w={300} h={300} />
   <BrushSettings />
 </section>
+
+<style>
+  section {
+    display: grid;
+    gap: 20px;
+  }
+</style>

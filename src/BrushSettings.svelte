@@ -5,3 +5,9 @@
 </script>
 
 <section>Brush settings= {color}, {size}, {deposit}</section>
+
+<style>
+  section {
+    border: solid 1px black;
+  }
+</style>
