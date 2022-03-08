@@ -11,10 +11,14 @@
     WebGLRenderer,
     OrbitControls,
   } from "svelthree";
+  import { settings } from "./stores";
+  import { Str2Hex } from "./utils";
 
   export let w = window.innerWidth;
   export let h = window.innerHeight;
-  export let color = 0xff3e00;
+  let color = 0xff3e00;
+
+  $: color = Str2Hex($settings.brush.color);
 
   export let cubeGeometry = new BoxBufferGeometry(1, 1, 1);
   export let cubeMaterial = new MeshStandardMaterial();
@@ -32,7 +36,11 @@
           {scene}
           geometry={cubeGeometry}
           material={cubeMaterial}
-          mat={{ roughness: 0.5, metalness: 0.5, color: color }}
+          mat={{
+            roughness: 0.5,
+            metalness: 0.5,
+            color: color,
+          }}
           pos={[i * 20, 0, j * 10]}
           rot={[0.5, 0.6, 0]}
           scale={[1, 1, 1]}
