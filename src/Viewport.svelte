@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   import {
     Canvas,
     Scene,
@@ -10,6 +12,8 @@
     MeshStandardMaterial,
     WebGLRenderer,
     OrbitControls,
+    Raycaster,
+    GridHelper,
   } from "svelthree";
   import { settings } from "./stores";
   import { Str2Hex } from "./utils";
@@ -22,11 +26,22 @@
 
   export let cubeGeometry = new BoxBufferGeometry(1, 1, 1);
   export let cubeMaterial = new MeshStandardMaterial();
+
+  let grid = new GridHelper(100, 10);
+  onMount(() => {
+    let temp = document.getElementById("scene1");
+    console.log(grid, temp);
+  });
 </script>
 
 <Canvas let:sti {w} {h}>
   <Scene {sti} let:scene id="scene1" props={{ background: 0xedf2f7 }}>
-    <PerspectiveCamera {scene} id="cam1" pos={[0, 0, 3]} lookAt={[0, 0, 0]} />
+    <PerspectiveCamera
+      {scene}
+      id="cam1"
+      pos={[100, 100, 100]}
+      lookAt={[0, 0, 0]}
+    />
     <AmbientLight {scene} intensity={1.25} />
     <DirectionalLight {scene} pos={[3, 3, 3]} />
 
@@ -42,8 +57,9 @@
             color: color,
           }}
           pos={[i * 20, 0, j * 10]}
-          rot={[0.5, 0.6, 0]}
+          rot={[0, 0, 0]}
           scale={[1, 1, 1]}
+          onClick={(e) => console.log(e)}
         />
       {/each}
     {/each}

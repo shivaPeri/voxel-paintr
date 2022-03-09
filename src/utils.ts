@@ -12,5 +12,5 @@ export const Hex2Str = (hex) => {
 };
 
 export const Str2Hex = (str) => {
-  return Number("0x" + str.substring(1));
+  return parseInt(str.slice(1), 16);
 };

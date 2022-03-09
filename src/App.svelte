@@ -6,7 +6,7 @@
 <section>
   <h1>voxel paintr</h1>
   <div>here is a heading</div>
-  <Viewport w={300} h={300} />
+  <Viewport w={800} h={600} />
   <BrushSettings />
 </section>
 
